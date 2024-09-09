@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      /* Basic Reset */
+      body,
+      h1,
+      form,
+      label,
+      input,
+      button {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+      }
+
+      #main {
+        max-width: 600px;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      #form-box {
+        text-align: center;
+      }
+
+      h1 {
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+        color: #28a745;
+        margin-bottom: 20px;
+        font-size: 2em;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      label {
+        font-size: 1em;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+
+      #agree {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #agree input {
+        margin-right: 10px;
+      }
+
+      button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="form-box">
+        <h1><u>Registration Form</u></h1>
+        <form id="form">
+          <div id="username" class="inputs">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              required
+              id="name"
+              name="name"
+              placeholder="Enter Name"
+            />
+          </div>
+          <div id="emailid" class="inputs">
+            <label for="email">Valid Email</label>
+            <input
+              type="email"
+              required
+              id="email"
+              name="email"
+              placeholder="Enter Email"
+            />
+          </div>
+          <div id="passwd" class="inputs">
+            <label for="password">New Password</label>
+            <input
+              type="password"
+              required
+              id="password"
+              name="password"
+              placeholder="Enter Password"
+            />
+          </div>
+          <div id="dob_id" class="inputs">
+            <label for="dob">Date of Birth</label>
+            <input id="dob" name="dob" type="date" required />
+          </div>
+          <div id="agree">
+            <input id="tc" type="checkbox" /> I have read and agree to the terms
+            and conditions.
+          </div>
+          <button id="submit" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
