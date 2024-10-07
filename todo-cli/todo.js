@@ -1,81 +1,34 @@
 const todoList = () => {
   all = [];
+
   const add = (todoItem) => {
     all.push(todoItem);
   };
+
   const markAsComplete = (index) => {
     all[index].completed = true;
   };
 
   const overdue = () => {
-    // Write the date check condition here and return the array
-    // of overdue items accordingly.
-    over = [];
-    for (let i = 0; i < all.length; i++) {
-      if (Object.values(all[i])[1] === yesterday) {
-        over.push(all[i]);
-      }
-    }
-    return over;
+    return all.filter((todo) => todo.dueDate < today);
   };
 
   const dueToday = () => {
-    // Write the date check condition here and return the array
-    // of todo items that are due today accordingly.
-    duet = [];
-    for (let i = 0; i < all.length; i++) {
-      if (Object.values(all[i])[1] === today) {
-        duet.push(all[i]);
-      }
-    }
-
-    return duet;
+    return all.filter((todo) => todo.dueDate === today);
   };
 
   const dueLater = () => {
-    // Write the date check condition here and return the array
-    // of todo items that are due later accordingly.
-    duel = [];
-    for (let i = 0; i < all.length; i++) {
-      if (Object.values(all[i])[1] === tomorrow) {
-        duel.push(all[i]);
-      }
-    }
-
-    return duel;
+    return all.filter((todo) => todo.dueDate > today);
   };
 
   const toDisplayableList = (list) => {
-    // Format the To-Do list here, and return the output string
-    // as per the format given above.
-    a = "";
-    for (let i = 0; i < list.length; i++) {
-      if (Object.values(list[i])[1] === today) {
-        if (Object.values(l[i])[2] === true) {
-          a += "[" + "x] " + Object.values(list[i])[0] + "\n";
-        } else {
-          a += "[ ] " + Object.values(list[i])[0] + "\n";
-        }
-      } else {
-        if (Object.values(list[i])[2] === true) {
-          a +=
-            "[" +
-            "x] " +
-            Object.values(list[i])[0] +
-            " " +
-            Object.values(list[i])[1] +
-            "\n";
-        } else {
-          a +=
-            "[ ] " +
-            Object.values(list[i])[0] +
-            " " +
-            Object.values(list[i])[1] +
-            "\n";
-        }
-      }
-    }
-    return a;
+    return list
+      .map((todo) => {
+        const checkbox = todo.completed ? "[x]" : "[ ]";
+        const displayDate = todo.dueDate === today ? "" : todo.dueDate;
+        return `${checkbox} ${todo.title} ${displayDate}`.trim();
+      })
+      .join("\n");
   };
 
   return {
@@ -88,7 +41,6 @@ const todoList = () => {
     toDisplayableList,
   };
 };
-
 // ####################################### #
 // DO NOT CHANGE ANYTHING BELOW THIS LINE. #
 // ####################################### #
