@@ -1,0 +1,14 @@
+{
+  "name": "todo-cli",
+  "version": "1.0.0",
+  "main": "todo.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Mayank Raj <mayankrajsingh7646@gmail.com>",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
