@@ -1,10 +1,10 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
-const minimist = require("minimist"); // npm i minimist --save
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const minimist = require('minimist'); // npm i minimist --save
 
 // Parse command line arguments
-// eslint-disable-next-line no-undef
+ 
 const args = minimist(process.argv.slice(2), {
   default: {
     port: 5000,
@@ -12,12 +12,12 @@ const args = minimist(process.argv.slice(2), {
 });
 
 // Define file paths
-// eslint-disable-next-line no-undef
-const homePath = path.join(__dirname, "home.html");
-// eslint-disable-next-line no-undef
-const projectPath = path.join(__dirname, "project.html");
-// eslint-disable-next-line no-undef
-const registrationPath = path.join(__dirname, "registration.html");
+ 
+const homePath = path.join(__dirname, 'home.html');
+ 
+const projectPath = path.join(__dirname, 'project.html');
+ 
+const registrationPath = path.join(__dirname, 'registration.html');
 
 // Read files asynchronously
 const readFileAsync = (filePath) => {
@@ -42,14 +42,14 @@ Promise.all([
     http
       .createServer((request, response) => {
         const url = request.url;
-        response.writeHead(200, { "Content-Type": "text/html" });
+        response.writeHead(200, { 'Content-Type': 'text/html' });
 
         switch (url) {
-          case "/project":
+          case '/project':
             response.write(projectContent);
             response.end();
             break;
-          case "/registration":
+          case '/registration':
             response.write(registerContent);
             response.end();
             break;
@@ -64,5 +64,5 @@ Promise.all([
       });
   })
   .catch((err) => {
-    console.error("Error reading files:", err);
+    console.error('Error reading files:', err);
   });
