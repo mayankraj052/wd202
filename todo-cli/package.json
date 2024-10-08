@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "main": "todo.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky"
   },
   "author": "Mayank Raj <mayankrajsingh7646@gmail.com>",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "husky": "^9.1.6",
     "jest": "^29.7.0"
   }
 }
