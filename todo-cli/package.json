@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest"
   },
-  "lint-staged": {
+  "lint-staged":{
     "*.js": [
       "eslint",
       "prettier --write ."
