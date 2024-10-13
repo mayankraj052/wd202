@@ -1,0 +1,15 @@
+<li class="todo-item <%= todo.completed ? 'completed' : '' %>">
+    <span><%= todo.text %></span>
+    <div class="todo-actions">
+      <% if (!todo.completed) { %>
+        <form action="/todos/<%= todo.id %>/markAsCompleted" method="POST">
+          <button type="submit" class="complete-btn">Mark as Completed</button>
+        </form>
+      <% } %>
+      <form action="/todos/<%= todo.id %>" method="POST" class="delete-form">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" class="delete-btn">Delete</button>
+      </form>
+    </div>
+  </li>
+  

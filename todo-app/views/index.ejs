@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="/css/styles.css">  <!-- Linking external CSS file -->
+</head>
+<body>
+<%- include('header.ejs') %>  <!-- Including the header -->
+
+<main>
+  <section class="todo-form-section">
+    <h2>Add a New Todo</h2>
+    <form action="/todos" method="POST" class="todo-form">
+      <input type="text" name="todo" placeholder="Enter your todo" required>
+      <button type="submit">Add Todo</button>
+    </form>
+  </section>
+
+  <section class="todos-list-section">
+    <h2>All Todos</h2>
+    <ul class="todos-list">
+      <% if (todos && todos.length > 0) { %>
+        <% todos.forEach(function(todo) { %>
+          <%- include('todo', { todo: todo }) %>  <!-- Including each todo item -->
+        <% }); %>
+      <% } else { %>
+        <li>No todos available</li>
+      <% } %>
+    </ul>
+  </section>
+</main>
+
+<%- include('footer.ejs') %>  <!-- Including the footer -->
+</body>
+</html>
