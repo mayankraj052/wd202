@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start:prod":"node index.js",
     "start": "nodemon -e js,ejs",
-    "test": "jest",
-    "prepare": "husky"
+    "start:prod": "node index.js",
+    "prepare": "cd ..&& husky install todo-app/.husky",
+    "pretest": "NODE_ENV=test npx sequelize-cli db:drop && NODE_ENV=test npx sequelize-cli db:create",
+    "test": "NODE_ENV=test jest --detectOpenHandles"
   },
   "lint-staged": {
     "*.js": [
