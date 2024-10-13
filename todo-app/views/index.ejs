@@ -1,37 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo App</title>
-  <link rel="stylesheet" href="/css/styles.css">  <!-- Linking external CSS file -->
-</head>
-<body>
-<%- include('header.ejs') %>  <!-- Including the header -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Todo List Application</title>
+  </head>
+  <body>
+    <%- include('header.ejs') %>
 
-<main>
-  <section class="todo-form-section">
-    <h2>Add a New Todo</h2>
-    <form action="/todos" method="POST" class="todo-form">
-      <input type="text" name="todo" placeholder="Enter your todo" required>
-      <button type="submit">Add Todo</button>
+    <!-- Form to create a new todo -->
+    <form onsubmit="createTodo(); return false;">
+      <input
+        type="text"
+        id="todo-title"
+        placeholder="Enter todo title"
+        required
+      />
+      <input type="date" id="todo-due" required />
+      <button type="submit">Add</button>
     </form>
-  </section>
 
-  <section class="todos-list-section">
-    <h2>All Todos</h2>
-    <ul class="todos-list">
-      <% if (todos && todos.length > 0) { %>
-        <% todos.forEach(function(todo) { %>
-          <%- include('todo', { todo: todo }) %>  <!-- Including each todo item -->
-        <% }); %>
-      <% } else { %>
-        <li>No todos available</li>
-      <% } %>
-    </ul>
-  </section>
-</main>
+    <!-- Section to list todos -->
+    <%- include('todos.ejs', { overdueTodos, dueTodayTodos, dueLaterTodos }) %>
 
-<%- include('footer.ejs') %>  <!-- Including the footer -->
-</body>
+    <script>
+      // Function to handle the creation of a new todo
+      function createTodo() {
+        const title = document.getElementById("todo-title").value;
+        const dueDate = document.getElementById("todo-due").value;
+
+        if (title && dueDate) {
+          fetch("/todos", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title, dueDate }),
+          })
+            .then((response) => response.json())
+            .then(() => {
+              window.location.reload(); // Reload the page to see updated todo list
+            })
+            .catch((error) => {
+              console.error("Error adding todo:", error);
+            });
+        } else {
+          alert("Please fill in both fields.");
+        }
+      }
+    </script>
+    <- include('footer.ejs') %>
+  </body>
 </html>

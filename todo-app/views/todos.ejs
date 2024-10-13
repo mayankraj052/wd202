@@ -1,15 +1,36 @@
-<li class="todo-item <%= todo.completed ? 'completed' : '' %>">
-    <span><%= todo.text %></span>
-    <div class="todo-actions">
-      <% if (!todo.completed) { %>
-        <form action="/todos/<%= todo.id %>/markAsCompleted" method="POST">
-          <button type="submit" class="complete-btn">Mark as Completed</button>
-        </form>
-      <% } %>
-      <form action="/todos/<%= todo.id %>" method="POST" class="delete-form">
-        <input type="hidden" name="_method" value="DELETE">
-        <button type="submit" class="delete-btn">Delete</button>
-      </form>
-    </div>
-  </li>
-  
+<section>
+  <!-- Overdue Todos Section -->
+  <div style="display: flex; align-items: center">
+    <h5>Overdue</h5>
+    (<span id="count-overdue"><%= overdueTodos.length %></span>)
+  </div>
+  <ul>
+    <% overdueTodos.forEach(todo => { %>
+    <li><%= todo.title %> (Due: <%= todo.dueDate %>)</li>
+    <% }) %>
+  </ul>
+</section>
+<!-- Todos Due Today Section -->
+<section>
+  <div style="display: flex; align-items: center">
+    <h5>Due Today</h5>
+    (<span id="count-due-today"><%= dueTodayTodos.length %></span>)
+  </div>
+  <ul>
+    <% dueTodayTodos.forEach(todo => { %>
+    <li><%= todo.title %> (Due: <%= todo.dueDate %>)</li>
+    <% }) %>
+  </ul>
+</section>
+<!-- Todos Due Later Section -->
+<section>
+  <div style="display: flex; align-items: center">
+    <h5>Due Later</h5>
+    (<span id="count-due-later"><%= dueLaterTodos.length %></span>)
+  </div>
+  <ul>
+    <% dueLaterTodos.forEach(todo => { %>
+    <li><%= todo.title %> (Due: <%= todo.dueDate %>)</li>
+    <% }) %>
+  </ul>
+</section>
