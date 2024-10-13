@@ -1,36 +1,21 @@
-<section>
-  <!-- Overdue Todos Section -->
-  <div style="display: flex; align-items: center">
-    <h5>Overdue</h5>
-    (<span id="count-overdue"><%= overdueTodos.length %></span>)
-  </div>
-  <ul>
-    <% overdueTodos.forEach(todo => { %>
-    <li><%= todo.title %> (Due: <%= todo.dueDate %>)</li>
-    <% }) %>
-  </ul>
-</section>
-<!-- Todos Due Today Section -->
-<section>
-  <div style="display: flex; align-items: center">
-    <h5>Due Today</h5>
-    (<span id="count-due-today"><%= dueTodayTodos.length %></span>)
-  </div>
-  <ul>
-    <% dueTodayTodos.forEach(todo => { %>
-    <li><%= todo.title %> (Due: <%= todo.dueDate %>)</li>
-    <% }) %>
-  </ul>
-</section>
-<!-- Todos Due Later Section -->
-<section>
-  <div style="display: flex; align-items: center">
-    <h5>Due Later</h5>
-    (<span id="count-due-later"><%= dueLaterTodos.length %></span>)
-  </div>
-  <ul>
-    <% dueLaterTodos.forEach(todo => { %>
-    <li><%= todo.title %> (Due: <%= todo.dueDate %>)</li>
-    <% }) %>
-  </ul>
-</section>
+<!-- views/todos.ejs -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Due Date</th>
+      <th>Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% todos.forEach(function(todo) { %>
+      <tr>
+        <td><%= todo.id %></td>
+        <td><%= todo.title %></td>
+        <td><%= new Date(todo.dueDate).toLocaleDateString() %></td>
+        <td><%= todo.completed ? 'Yes' : 'No' %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
